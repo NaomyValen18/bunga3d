@@ -1,58 +1,87 @@
-body {
+* {
   margin: 0;
-  background: linear-gradient(#d3faff, #fff3f3);
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow: hidden;
-  font-family: sans-serif;
-  cursor: grab;
+  flex-direction: column;
 }
 
-.scene {
-  perspective: 1000px;
+.login-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1.2s ease-in-out;
+  width: 320px;
 }
 
-.flower {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  transform-style: preserve-3d;
-  animation: bloom 2s ease-out forwards;
-  opacity: 0;
-  transform: scale(0.2) rotateY(0deg);
+.login-container h1 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  letter-spacing: 1px;
 }
 
-.petal {
-  position: absolute;
-  width: 60px;
-  height: 120px;
-  background: radial-gradient(circle at center, pink 40%, deeppink 100%);
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  transform-origin: center bottom;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+.login-form input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 16px;
 }
 
-.center {
-  position: absolute;
-  top: 80px;
-  left: 80px;
-  width: 40px;
-  height: 40px;
-  background: gold;
-  border-radius: 50%;
-  z-index: 10;
-  box-shadow: 0 0 10px #d4af37;
+.login-form input::placeholder {
+  color: #ccc;
 }
 
-@keyframes bloom {
-  0% {
-    opacity: 0;
-    transform: scale(0.2) rotateY(0deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotateY(0deg);
-  }
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #00c6ff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #0072ff;
+  transform: scale(1.03);
+}
+
+#error-message {
+  margin-top: 10px;
+  color: #ff6b6b;
+  text-align: center;
+  font-size: 14px;
+}
+
+footer {
+  margin-top: 40px;
+  color: #ccc;
+  font-size: 12px;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
