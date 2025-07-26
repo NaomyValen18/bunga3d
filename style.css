@@ -1,1 +1,58 @@
+body {
+  margin: 0;
+  background: linear-gradient(#d3faff, #fff3f3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  font-family: sans-serif;
+  cursor: grab;
+}
 
+.scene {
+  perspective: 1000px;
+}
+
+.flower {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  animation: bloom 2s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.2) rotateY(0deg);
+}
+
+.petal {
+  position: absolute;
+  width: 60px;
+  height: 120px;
+  background: radial-gradient(circle at center, pink 40%, deeppink 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin: center bottom;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.center {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  width: 40px;
+  height: 40px;
+  background: gold;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 10px #d4af37;
+}
+
+@keyframes bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotateY(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+}
