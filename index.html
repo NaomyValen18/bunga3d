@@ -3,15 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bunga 3D CSS</title>
+  <title>Secure Login</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="scene">
-    <div class="flower" id="flower">
-      <div class="center"></div>
+  <div class="login-container">
+    <h1>🔒 Secure Login</h1>
+    <div class="login-form">
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="handleLogin()">Login</button>
+      <p id="error-message"></p>
     </div>
   </div>
+
+  <footer>
+    <p>&copy; 2025 ApocalypseWeb • All rights reserved</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
