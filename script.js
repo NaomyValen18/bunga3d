@@ -1,37 +1,25 @@
-const flower = document.getElementById('flower');
-const totalPetals = 12;
+let users = [];
 
-for (let i = 0; i < totalPetals; i++) {
-  const petal = document.createElement('div');
-  petal.className = 'petal';
-  const angle = (360 / totalPetals) * i;
-  petal.style.transform = `
-    rotateY(${angle}deg)
-    translateZ(60px)
-    rotateX(45deg)
-  `;
-  flower.appendChild(petal);
+fetch('users.json')
+  .then(response => response.json())
+  .then(data => {
+    users = data.users;
+  })
+  .catch(err => {
+    console.error('Gagal memuat users.json:', err);
+  });
+
+function handleLogin() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const errorMsg = document.getElementById("error-message");
+
+  const user = users.find(u => u.username === username && u.password === password);
+
+  if (user) {
+    // Redirect ke halaman jika login sukses
+    window.location.href = "https://example.com"; // ganti dengan web target kamu
+  } else {
+    errorMsg.textContent = "Username atau password salah!";
+  }
 }
-
-let isDragging = false;
-let previousX = 0;
-let rotateY = 0;
-
-document.querySelector('.scene').addEventListener('mousedown', (e) => {
-  isDragging = true;
-  previousX = e.clientX;
-  document.body.style.cursor = 'grabbing';
-});
-
-window.addEventListener('mouseup', () => {
-  isDragging = false;
-  document.body.style.cursor = 'grab';
-});
-
-window.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  const deltaX = e.clientX - previousX;
-  rotateY += deltaX * 0.5;
-  flower.style.transform = `scale(1) rotateY(${rotateY}deg)`;
-  previousX = e.clientX;
-});
